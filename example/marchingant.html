@@ -1,0 +1,85 @@
+<html>
+	<head>
+
+        <script src = "../lib/jquery.js"></script>
+		<script src = "../lib/d3.js"></script>
+        <script src = "../lib/paper-full.js "></script>
+        <script src = "../src/marchingants.js"></script>
+	</head>
+    <style>
+        svg{
+        	position:absolute;
+        	left:0px;
+        	top:0px;
+        	z-index: -1;
+        }
+        canvas{
+        	position:absolute;
+        	left:0px;
+        	top:0px;
+        }
+    </style>
+	<body>
+       	<canvas id = "mycanvas" width="800" height="600" display=" inline"></canvas>
+		<div>
+			<svg id="coversvg" width="800" height="600" >
+				<rect id="rect1" x="100" y="100" style="fill: #EA4C22;" width="80" height="200"></rect>
+
+                <rect id = "rect2" x = "300" y = "100" style= "fill:#EA4C22;" width="80" height = "200">
+			</svg>
+		</div>
+	</body>
+	<script type="text/javascript">
+
+		var canvas = document.getElementById('mycanvas');
+		// var canvas = document.getElementsByTagName('canvas')[0];
+
+        //1. set up the paperjs environment
+        paper.setup(canvas);
+        paper.install(window);
+        paper.view.draw();
+
+        //2. fit canvas to the size of svg
+		canvas.width  = 800;
+		canvas.height = 600;
+
+		//3. set MA info
+        var deltaX = 0
+		var rectBox = document.getElementById('rect1').getBoundingClientRect();
+		var visual_proxy = [
+			[rectBox.x + deltaX, rectBox.y + rectBox.height],
+            [rectBox.x + rectBox.width * 0.5 + deltaX, rectBox.y + rectBox.height - 13],
+			[rectBox.x + rectBox.width + deltaX, rectBox.y + rectBox.height],
+			[rectBox.x + rectBox.width + deltaX, rectBox.y + rectBox.height + 10],
+            [rectBox.x + rectBox.width * 0.5 + deltaX, rectBox.y + rectBox.height-3],
+			[rectBox.x + deltaX, rectBox.y + rectBox.height + 10],
+			[rectBox.x + deltaX, rectBox.y + rectBox.height],
+		]
+		var path = [
+			[rectBox.x + rectBox.width * 0.5 , rectBox.y + rectBox.height],
+			[rectBox.x + rectBox.width * 0.5 , rectBox.y]
+		]
+		console.log(' visual_proxy ', visual_proxy, 'path', path);
+
+		var boundary = [
+			[rectBox.x, rectBox.y], 
+			[rectBox.x + rectBox.width, rectBox.y], 
+			[rectBox.x + rectBox.width, rectBox.y + rectBox.height],
+			[rectBox.x, rectBox.y + rectBox.height],
+			[rectBox.x, rectBox.y], 
+		]
+
+		var speed = 30
+		var space = 30
+		var color = '#F9DEB3'
+		var groupId = 1
+	
+        //4. start the MA setting
+        MA_Start()
+        //5. set MA
+		marchingAnt(visual_proxy, path, boundary, speed, space, groupId, color)
+        //5. end the MA setting, and begin to draw MA
+        MA_End();
+
+	</script>
+</html>

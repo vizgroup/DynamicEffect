@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+        form {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        svg {
+          font: 10px sans-serif;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <svg id = "coversvg" width="700" height="570">
+        </svg>
+
+
+        <script src="../lib/d3.js"></script>
+        <script src="../src/ga.js"></script>
+
+        <script>
+
+          function drawTreeMapLight(){
+
+            var offset1 = 1, offset2 = 2
+            var repetition = 10, speed = 30
+
+            var svg = d3.select("svg")
+
+            //Add GA to rect 1
+            svg.append("rect")
+              .attr("x", 100)
+              .attr("y", 100)
+              .attr("width", 150)
+              .attr("height", 150)
+              .attr('class', 'treecoverrect_new')
+              .style('fill', function(d){
+                return '#EA4C22'
+              })              
+              .style('stroke-width', '2.5px')
+              .style("stroke", "#2472EB")
+              .style('display', function(d){
+                return 'block'
+              })
+              .style('effect', function(d){
+                  //Visual_Proxy, Offset, Repetition, Speed
+                  gradualAppearance(d3.select(this), offset1, repetition, speed)
+              })
+            
+
+            //Add GA to rect 2
+            svg.append("rect")
+              .attr("x", 300)
+              .attr("y", 100)
+              .attr("width", 150)
+              .attr("height", 150)
+              .attr('class', 'treecoverrect_new')
+              .style('fill', function(d){
+                return '#EA4C22'
+              })              
+              .style('stroke-width', '2.5px')
+              .style("stroke", "#2472EB")
+              .style('display', function(d){
+                return 'block'
+              })
+              .style('effect', function(d){
+                  //Visual_Proxy, Offset, Repetition, Speed
+                  gradualAppearance(d3.select(this), offset2, repetition, speed)
+              })
+            }
+
+            drawTreeMapLight()
+            
+        </script>
+        
+    </body>
+</html>
