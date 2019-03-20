@@ -32,7 +32,7 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space [,Groupid, Color])
 
 ###### Example
 
-./example/marchingant/
+./example/marchingant.html
 
 ###### Parameters
 
@@ -128,7 +128,7 @@ gradualAppearance (Visual_Proxy, Offset, Repetition, Speed)
 
 - Offset: the time when GA effect begins to appear, e.g., 
 	```
-	Offset = 3 //the unit is second
+	Offset = 3 //the begin index of unit, in terms of speed
 	```
 
 - Repetition: the number of times GA occurs, e.g.,
