@@ -21,7 +21,7 @@ This repository provides the source code for the three Dynamic Effects in [Activ
 
 ## Marching Ants
 
-<img src="https://github.com/vizgroup/DataDrivenEffect/blob/master/rc/marchingant.png" height="150">
+<img src="https://github.com/vizgroup/DynamicEffect/blob/master/rc/marchingant.png" height="150">
 
 
 ###### API
@@ -70,7 +70,7 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space [,Groupid, Color])
 
 ## Geometric Deformation
 
-<img src="https://github.com/vizgroup/DataDrivenEffect/blob/master/rc/geometrydeformation.png" height="150">
+<img src="https://github.com/vizgroup/DynamicEffect/blob/master/rc/geometrydeformation.png" height="150">
 
 
 ###### API
@@ -106,7 +106,7 @@ geometrydeformation (Visual_proxy, Focal, Bandwidth, Speed)
 
 ## Gradual Appearance
 
-<img src="https://github.com/vizgroup/DataDrivenEffect/blob/master/rc/gradualappearance.png" height="150">
+<img src="https://github.com/vizgroup/DynamicEffect/blob/master/rc/gradualappearance.png" height="150">
 
 ###### API
 
