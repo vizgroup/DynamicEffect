@@ -69,15 +69,46 @@
 			[rectBox.x, rectBox.y], 
 		]
 
-		var speed = 30
+        var rectBox2 = document.getElementById('rect2').getBoundingClientRect();
+        var visual_proxy2 = [
+            [rectBox2.x + deltaX, rectBox2.y + rectBox2.height],
+            [rectBox2.x + rectBox2.width * 0.5 + deltaX, rectBox2.y + rectBox2.height - 13],
+            [rectBox2.x + rectBox2.width + deltaX, rectBox2.y + rectBox2.height],
+            [rectBox2.x + rectBox2.width + deltaX, rectBox2.y + rectBox2.height + 10],
+            [rectBox2.x + rectBox2.width * 0.5 + deltaX, rectBox2.y + rectBox2.height-3],
+            [rectBox2.x + deltaX, rectBox2.y + rectBox2.height + 10],
+            [rectBox2.x + deltaX, rectBox2.y + rectBox2.height],
+        ]
+        var path2 = [
+            [rectBox2.x + rectBox2.width * 0.5 , rectBox2.y + rectBox2.height],
+            // [600,400]
+            [rectBox2.x + rectBox2.width * 0.5 , rectBox2.y],
+
+
+        ]
+
+        var boundary2 = [
+            [rectBox2.x, rectBox2.y], 
+            [rectBox2.x + rectBox2.width, rectBox2.y], 
+            [rectBox2.x + rectBox2.width, rectBox2.y + rectBox2.height],
+            [rectBox2.x, rectBox2.y + rectBox2.height],
+            [rectBox2.x, rectBox2.y], 
+        ]
+
+		var speed = 25
 		var space = 30
-		var color = '#F9DEB3'
-		var groupId = 1
+        var color = '#F9DEB3'
+
+        var speed2 = 10
+        var space2 = 50
+        var color2 = "#000000"
 	
         //4. start the MA setting
         MA_Start()
         //5. set MA
-		marchingAnt(visual_proxy, path, boundary, speed, space, groupId, color)
+		
+        marchingAnt(visual_proxy, path, boundary, speed, space, color)
+        marchingAnt(visual_proxy2, path2, boundary2, speed2, space2, color2)
         //5. end the MA setting, and begin to draw MA
         MA_End();
 
