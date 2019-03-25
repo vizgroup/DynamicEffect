@@ -27,7 +27,7 @@ This repository provides the source code for the three Dynamic Effects in [Activ
 ###### API
 
 ```
-marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space [,Groupid, Color])
+marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space Color)
 ```
 
 ###### Example
