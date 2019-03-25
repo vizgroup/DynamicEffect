@@ -65,8 +65,6 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 	```
 	Color = "#aabbcc"
 	```
-	
-- Groupid: group identification of ants. If ants have the same Groupid, they will have uniformed ants' gap and speed.
 
 ## Geometric Deformation
 
