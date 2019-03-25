@@ -41,7 +41,7 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 	Visual_proxy = [[100, 300], [300, 350], [100, 200]] // to define a triangular Ant. 
 	```
 
-- Path: the path that the ants march, defined by a point list (Note that path ONLY define the direction of ant marches, the origin are the ant position.), e.g., 
+- Path: the path that the ants march, defined by a point list, e.g., 
 	```
 	Path = [[100, 100], [200, 200], ...] // where [x_i, y_i] is the i_th dot
 	```
