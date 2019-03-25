@@ -74,7 +74,7 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 ###### API
 
 ```
-geometrydeformation (Visual_proxy, Focal, Bandwidth, Speed)
+geometryDeformation (Visual_proxy, Focal, Bandwidth, Speed)
 ```
 
 ###### Example
