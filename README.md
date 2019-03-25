@@ -66,7 +66,7 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 	Color = "#aabbcc"
 	```
 
-## Geometric Deformation
+## Geometry Deformation
 
 <img src="https://github.com/vizgroup/DynamicEffect/blob/master/rc/geometrydeformation.png" height="150">
 
