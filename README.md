@@ -36,7 +36,7 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 
 ###### Parameters
 
-- Visual_proxy: the ant shape defined by a point list (Visual_proxy also define the original position of ant marching),  e.g.,
+- Visual_proxy: the ant shape defined by a point list,  e.g.,
 	```
 	Visual_proxy = [[100, 300], [300, 350], [100, 200]] // to define a triangular Ant. 
 	```
