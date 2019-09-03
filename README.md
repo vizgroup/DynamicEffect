@@ -66,6 +66,50 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 	Color = "#aabbcc"
 	```
 
+###### API
+
+```
+marchingAntByExample(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
+```
+
+###### Example
+
+./example/marchingant.html
+
+###### Parameters
+
+- Visual_proxy: the ant path defined by a custom SVG graphic(define item as svg importing from a file), e.g.,
+	```
+	paper.project.importSVG('../svg/rightarrow.svg', function(item){
+		Visual_proxy = item._children[1] // to find the first child of type Path in the children of item. 
+	}
+	```
+
+- Path: the path that the ants march, defined by a point list, e.g., 
+	```
+	Path = [[100, 100], [200, 200], ...] // where [x_i, y_i] is the i_th dot
+	```
+  
+- Boundry: the shape bounds ants, defined by a point list, e.g., 
+	```
+	Boundary = [[100, 100], [300, 100], [300, 300], [100, 300] // to define a rectangular boundary
+	```
+
+- Speed: the speed that the ant marches, e.g., 
+	```
+	Speed = 20 //scaled in range[10, 30]; the bigger, the faster. 
+	```
+
+- Space: the gap between ants, e.g.,
+	```
+	Space = 10 //scaled in range[10, 30]; the bigger, the sparser.
+	```
+
+- Color: ant's color
+	```
+	Color = "#aabbcc"
+	```
+
 ## Geometry Deformation
 
 <img src="https://github.com/vizgroup/DynamicEffect/blob/master/rc/geometrydeformation.png" height="150">
