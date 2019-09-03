@@ -74,7 +74,7 @@ marchingAntByExample(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 
 ###### Example
 
-./example/marchingant.html
+./example/marchingantbyexample.html
 
 ###### Parameters
 
