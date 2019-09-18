@@ -72,6 +72,8 @@ marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 marchingAntByExample(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
 ```
 
+note: to run this example, please establish a html server, e.g., run 'python -m http.server 20098' if using python version > 3.0
+
 ###### Example
 
 ./example/marchingantbyexample.html
