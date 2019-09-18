@@ -46,6 +46,8 @@
                 .x(function(d) { return d[0]; })
                 .y(function(d) { return d[1]; })
         
+        //here we define a path (along which ants march) by point list, this hard-coding just to show the API usage :-)
+        //in practise, path can be derived from the data, e.g., the border of a rectangle, or a trajectory
         var path1 = [
             [117.01388835906982, 438.0138883590698],
             [123.01388835906982, 427.0138883590698],
@@ -163,12 +165,12 @@
             boundary1 = [[115,300],[470,300],[470,450],[115,450]]
             var speed1 = 25
             var space1 = 25
-            var color1 = "#88996C"
+            var color1 = "#05a0ff"
 
             boundary2 = [[575,300],[930,300],[930,450],[575,450]]
             var speed2 = 15
             var space2 = 50
-            var color2 = "#B2A32E"
+            var color2 = "#ffd705"
 
             MA_Start()
             marchingAntByExample(visual_proxy, path1, boundary1, speed1, space1, color1)
