@@ -24,8 +24,9 @@
 
           function drawTreeMapLight(){
 
-            var offset1 = 1, offset2 = 2
-            var repetition = 10, speed = 0.8
+            var offset1 = 1, offset2 = 1
+            var repetition = 10, speed1 = 1
+            speed2 = 0.5
 
             var svg = d3.select("svg")
 
@@ -62,8 +63,8 @@
                 return 'block'
               })
             
-            gradualAppearance(rect1, offset1, repetition, speed)
-            gradualAppearance(rect2, offset2, repetition, speed)  
+            gradualAppearance(rect1, offset1, repetition, speed1)
+            gradualAppearance(rect2, offset2, repetition, speed2)  
           }
 
           drawTreeMapLight()

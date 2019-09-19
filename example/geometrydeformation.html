@@ -18,33 +18,45 @@
         var svg = d3.select("#mysvg")
     
         var lineFunction = d3.line()
-              .x(function(d) { return d.x; })
-              .y(function(d) { return d.y; })
+              .x(function(d) { return d[0]; })
+              .y(function(d) { return d[1]; })
 
-        var data = [
-          {'x': 70, "y": 10},
-          {'x': 110, 'y': 70},
-          {'x': 10, 'y': 80},
-          {'x': 70, 'y': 10},
+        var data2 = [
+            [570, 210],
+            [610, 270],
+            [510, 280],
+            [570, 210]
         ]
 
-        var focal = [60,45]
-        var bandwidth = 50
-        var speed = 0.9
+        var data1 = [
+            [270, 210],
+            [310, 270],
+            [210, 280],
+            [270, 210]
+        ]
 
-        var trianglegraph = svg.append("path")
-            .attr("d", lineFunction(data))
-            .attr("transform", "translate(200,200)")
+        var focal1 = d3.polygonCentroid(d3.polygonHull(data1))
+        var focal2 = d3.polygonCentroid(d3.polygonHull(data2))
+        
+        var speed1 = 0.9
+        var speed2 = 0.5
+
+        var bandwidth = 50
+
+        var trianglegraph1 = svg.append("path")
+            .attr("d", lineFunction(data1))
             .attr("stroke", "black")
             .attr("stroke-width", 2)
             .style("fill", "#EA4C22")
-            // .style("effect", function(){
-            //     // 1. add effect of GD
-            //     //Visual_proxy, Focal, Bandwidth, Speed, Context
-            //     geometryDeformation(d3.select(this), focal, bandwidth, speed)
-            // });
         
-        geometryDeformation(trianglegraph, focal, bandwidth, speed)
+        var trianglegraph2 = svg.append("path")
+        .attr("d", lineFunction(data2))
+        .attr("stroke", "black")
+        .attr("stroke-width", 2)
+        .style("fill", "#EA4C22")
+        
+        geometryDeformation(trianglegraph1, focal1, bandwidth, speed1)
+        geometryDeformation(trianglegraph2, focal2, bandwidth, speed2)
         </script>
     </body>
 
