@@ -21,18 +21,18 @@
               .x(function(d) { return d[0]; })
               .y(function(d) { return d[1]; })
 
-        var data2 = [
-            [570, 210],
-            [610, 270],
-            [510, 280],
-            [570, 210]
-        ]
-
         var data1 = [
             [270, 210],
             [310, 270],
             [210, 280],
             [270, 210]
+        ]
+            
+        var data2 = [
+            [570, 210],
+            [610, 270],
+            [510, 280],
+            [570, 210]
         ]
 
         var focal1 = d3.polygonCentroid(d3.polygonHull(data1))
