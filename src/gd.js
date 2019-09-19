@@ -123,7 +123,7 @@ geometryDeformation = function(Visual_proxy, Focal, Bandwidth, Speed, Context){
                   if(index >= steplist.length){
                     index = 0
                   }
-
-                }, (35-Speed)/10*1000)
+                }, (1.25 - Speed)*1000)
+                // }, (35-Speed)/10*1000)
 
             }

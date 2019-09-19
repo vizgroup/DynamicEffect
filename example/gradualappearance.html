@@ -25,12 +25,12 @@
           function drawTreeMapLight(){
 
             var offset1 = 1, offset2 = 2
-            var repetition = 10, speed = 30
+            var repetition = 10, speed = 0.8
 
             var svg = d3.select("svg")
 
             //Add GA to rect 1
-            svg.append("rect")
+            var rect1 = svg.append("rect")
               .attr("x", 100)
               .attr("y", 100)
               .attr("width", 150)
@@ -44,14 +44,10 @@
               .style('display', function(d){
                 return 'block'
               })
-              .style('effect', function(d){
-                  //Visual_Proxy, Offset, Repetition, Speed
-                  gradualAppearance(d3.select(this), offset1, repetition, speed)
-              })
             
 
             //Add GA to rect 2
-            svg.append("rect")
+            var rect2 = svg.append("rect")
               .attr("x", 300)
               .attr("y", 100)
               .attr("width", 150)
@@ -65,13 +61,12 @@
               .style('display', function(d){
                 return 'block'
               })
-              .style('effect', function(d){
-                  //Visual_Proxy, Offset, Repetition, Speed
-                  gradualAppearance(d3.select(this), offset2, repetition, speed)
-              })
-            }
+            
+            gradualAppearance(rect1, offset1, repetition, speed)
+            gradualAppearance(rect2, offset2, repetition, speed)  
+          }
 
-            drawTreeMapLight()
+          drawTreeMapLight()
             
         </script>
         

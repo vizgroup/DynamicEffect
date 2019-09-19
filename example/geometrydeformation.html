@@ -30,7 +30,7 @@
 
         var focal = [60,45]
         var bandwidth = 50
-        var speed = 30
+        var speed = 0.9
 
         var trianglegraph = svg.append("path")
             .attr("d", lineFunction(data))
@@ -38,12 +38,13 @@
             .attr("stroke", "black")
             .attr("stroke-width", 2)
             .style("fill", "#EA4C22")
-            .style("effect", function(){
-                // 1. add effect of GD
-                //Visual_proxy, Focal, Bandwidth, Speed, Context
-                geometryDeformation(d3.select(this), focal, bandwidth, speed)
-            });
-
+            // .style("effect", function(){
+            //     // 1. add effect of GD
+            //     //Visual_proxy, Focal, Bandwidth, Speed, Context
+            //     geometryDeformation(d3.select(this), focal, bandwidth, speed)
+            // });
+        
+        geometryDeformation(trianglegraph, focal, bandwidth, speed)
         </script>
     </body>
 

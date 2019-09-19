@@ -145,7 +145,7 @@ geometryDeformation (Visual_proxy, Focal, Bandwidth, Speed)
 	```
 - Speed: the speed GD changes, e.g., 
 	```
-	Speed = 20 //scaled in range[10, 30]; the bigger, the faster. 
+	Speed = 0.9 //scaled in range[0, 1]; the bigger, the faster. 
     ```     
 
 ## Gradual Appearance
@@ -182,5 +182,5 @@ gradualAppearance (Visual_Proxy, Offset, Repetition, Speed)
 
 - Speed: the speed GA changes, e.g.,
 	``` 
-	Speed = 20 //scaled in range[10, 30]; the bigger, the faster.   
+	Speed = 0.9 //scaled in range[0, 1]; the bigger, the faster.   
 	```
