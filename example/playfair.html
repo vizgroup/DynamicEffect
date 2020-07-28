@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src = "../lib/jquery.js"></script>
+    <script src = "../lib/d3.js"></script>
+    <script src = "../lib/paper-full.js "></script>
+    <script src = "../src/marchingants.js"></script>
+
+    <style>
+        svg{
+        	position:absolute;
+        	left:0px;
+        	top:0px;
+        	z-index: -1;
+        }
+        canvas{
+        	position:absolute;
+        	left:0px;
+        	top:0px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id = "mycanvas" width = "1200" height="800" display=" inline">
+    </canvas>
+
+    <div>
+        <img src='../img/Playfair1821Pric.png' style="width: 1200px"></img>       
+    </div>
+
+    <script type="text/javascript" src="playfair_data.js"></script>
+    <script >
+        //1. set up the paperjs environment
+        var canvas = document.getElementsByTagName("canvas")[0];
+        paper.setup(canvas);
+        paper.install(window);
+          
+        //2. get the vertical paths from 'wheat' to 'wage'
+        var liPath = getPlayfairPaths();
+        //3. compute the boundary, ratio from 'wheat' to 'wage' according to vertical path
+        var minRatio = 0.08734939759036145, maxRatio = 0.5789473684210527;
+        var edge = 20
+        var baseLine = 592
+        var liMA = []
+        for(var i = 0; i < liPath.length; i ++){
+            var path = liPath[i];
+            var boundary = [
+                [path[0][0] - edge/2., path[0][1]],
+                [path[0][0] + edge/2., path[0][1]],
+                [path[1][0] + edge/2., path[1][1]], 
+                [path[1][0] - edge/2., path[1][1]], 
+                [path[0][0] - edge/2., path[0][1]]]
+            //4. map ratio to 'speed' by a piecewise linear function 
+            var ratio = (baseLine - path[0][1])/(baseLine - path[1][1])
+            var speed = 10 - Math.ceil(10 * (ratio - minRatio)/(maxRatio - minRatio))
+            if(ratio < 0.2)
+                speed = 40 - Math.ceil(40 * (ratio - minRatio)/(maxRatio - minRatio))
+            liMA.push({
+                'speed': speed,
+                'space': 60,
+                'path': path,
+                'boundary': boundary
+            })
+        }
+        //5. load visual proxy and activate MA
+        paper.project.importSVG('../svg/money.svg', function(item){
+            visual_proxy = item._children[1]
+            visual_proxy.visible = true;
+            MA_Start()
+            for(var i = 0; i < liMA.length; i ++){
+                var ma = liMA[i]
+                marchingAntByExample(visual_proxy, ma['path'], ma['boundary'], 
+                    ma['speed'], ma['space'], 'orange')
+            }
+            MA_End()
+        })
+
+    </script>
+   
+</body>
+</html>

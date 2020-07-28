@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src = "../lib/jquery.js"></script>
+    <script src = "../lib/d3.js"></script>
+    <script src = "../lib/paper-full.js "></script>
+    <script src = "../src/marchingants.js"></script>
+
+    <style>
+        svg{
+          position:absolute;
+          left:0px;
+          top:0px;
+          z-index: -1;
+        }
+        canvas{
+          position:absolute;
+          left:0px;
+          top:0px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id = "mycanvas" width = "1200" height="800" style="top:30px;left:30" display=" inline">
+    </canvas>
+
+    <div>
+        <svg id= "coversvg" width="1200" height="800" style="top:30px;left:30">
+        </svg>
+    </div>
+
+    <script type="text/javascript" src="boxplot_data.js"></script>
+    <script type="text/javascript" src="drawboxplot.js"></script>
+        
+    </script>
+    <script >
+        //1. set up the paperjs environment
+        var canvas = document.getElementById('mycanvas');
+        paper.setup(canvas);
+        paper.install(window);
+        paper.view.draw();
+
+        //2. draw static boxplot
+        drawBoxplot(liBoxplotdata)
+
+        //3. go over each boxplot, for upper and below part, to get
+        //a. driving data (q3 - median) for the upper / (median - q1) for the below, will be mapped to speed
+        //b. boundary pointlist
+        //c. path pointlist
+        liMAData = []
+        liMADesignCompo= []
+        d3.selectAll('.boxplot')
+          .each(function(d, i){
+            
+            var box = d3.select(this).select('.box')
+            var data = JSON.parse(d3.select(this).attr('data'))
+            
+            var width = +box.attr('width'), height = +box.attr('height')
+            var mline = d3.select(this).select('.mline');
+            var top = (+box.attr('y'))
+            var middlepos = [ d3.select(this).node().getBoundingClientRect().left + (+mline.attr('x1') + width * 0.5),  ((+mline.attr('y1')))];
+
+            //upper part
+            var upper_data = data.q3 - data.median
+            var upper_path = [middlepos, [middlepos[0], top]]
+            var upper_boundary = [[middlepos[0] - width/2., top], [middlepos[0] + width/2., top],
+                       [middlepos[0] + width/2., middlepos[1]], [middlepos[0] - width/2., middlepos[1]], [middlepos[0] - width/2., top]]
+
+            liMAData.push(upper_data)
+            liMADesignCompo.push({
+              'path': upper_path,
+              'boundary': upper_boundary
+            })
+
+            //below part
+            var below_data = data.median - data.q1 
+            var below_path = [middlepos, [middlepos[0], top + height]]
+            var below_boundary = [[middlepos[0] - width/2., middlepos[1]], [middlepos[0] + width/2., middlepos[1]], [middlepos[0] + width/2., top + height], [middlepos[0] - width/2., top + height]]
+            liMAData.push(below_data)
+            liMADesignCompo.push({
+              'path': below_path,
+              'boundary': below_boundary
+            })
+        })
+
+        //4. map data to speed
+        for(var i = 0; i < liMAData.length; i ++){
+          var data_normalize = (liMAData[i] - d3.min(liMAData))/(d3.max(liMAData) - d3.min(liMAData))
+          var speed = Math.ceil(30 - 20 * (0.3 + Math.pow(data_normalize,2)))
+          liMADesignCompo[i]['speed'] = speed
+        }
+
+        //5. init MA and animate
+        MA_Start()
+        for(var i = 0; i < liMADesignCompo.length; i ++){
+          marchingAnt([[110,387],[129,399],[129,405],[110,393],[92,404],[91,400],[110,387]], 
+            liMADesignCompo[i]['path'], liMADesignCompo[i]['boundary'] , liMADesignCompo[i]['speed'], 10, '#ffffff63')
+        }
+        MA_End()
+
+    </script>
+   
+</body>
+</html>
