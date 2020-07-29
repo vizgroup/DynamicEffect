@@ -25,7 +25,7 @@ This repository provides the source code for the three Dynamic Effects in [Activ
 
 	- Go to the directory ${path_to_github}
 	- Establish a html server, e.g., run 'python -m http.server 20098' if using python version > 3.0, 
-	- Open the url 'http://localhost:20098/example' in browser, and click the *.html, e.g., marchingantbyexample.html
+	- Open the url 'http://localhost:20098/example' in browser, and choose the *.html, e.g., marchingantbyexample.html
 
 ## Marching Ants
 
