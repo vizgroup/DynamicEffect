@@ -8,7 +8,7 @@ This repository provides the source code for the three Dynamic Effects in [Activ
 
 - [Gradual Appearance](#gradual-appearance)
 
-*File Structure*
+**File Structure**
 
 	- lib: //3rd party library
 	- src: //core code
@@ -25,7 +25,7 @@ This repository provides the source code for the three Dynamic Effects in [Activ
  
 	- API.md //API document
 	
-*To Run the Examples*
+**To Run the Examples**
 
 	- Go to the directory ${path_to_github}
 	- Establish a html server, e.g., run 'python -m http.server 20098' if python version > 3.0, 
