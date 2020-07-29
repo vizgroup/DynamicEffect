@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src = "../lib/jquery.js"></script>
+    <script src = "../lib/d3.js"></script>
+    <script src = "../lib/paper-full.js "></script>
+    <script src = "../src/marchingants.js"></script>
+
+    <style>
+        svg{
+        	position:absolute;
+        	left:0px;
+        	top:0px;
+        	z-index: -1;
+        }
+        canvas{
+        	position:absolute;
+        	left:0px;
+        	top:0px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id = "mycanvas" width = "1200" height="800" display=" inline">
+    </canvas>
+
+    <div>
+        <svg id="coversvg" width="1200" height="800">
+        </svg>
+    </div>
+    <script >
+        var canvas = document.getElementsByTagName("canvas")[0];
+        paper.setup(canvas);
+        paper.install(window);
+          
+        var lineFunction = d3.line()
+                .x(function(d) { return d[0]; })
+                .y(function(d) { return d[1]; })
+        
+        //here we define a path (along which ants march) by point list, this hard-coding just to show our API can support the moving-and-shrinking effect
+        var path = [[597,409],[610,411],[624,411],[637,408],[652,404],[667,401],[683,398],[697,397],[711,396],[726,396],[745,398]]
+
+        //and the shrinking boundary (where the ants are bounded)
+        var boundary = [[597,400],[608,402],[621,403],[632,403],[643,401],[656,398],[668,395],[680,392],[695,392],[711,391],[728,391],[744,396],[733,400],[716,399],[699,401],[684,403],[666,408],[650,414],[630,417],[609,418],[594,418],[597,400]]
+        
+        //draw the path and boundary, for better understanding the idea
+        var pathDom = d3.select('svg')
+                    .append("path")
+                    .attr("d", lineFunction(path))
+                    .attr("stroke", "black")
+                    .attr("stroke-width", 3)
+                    .style("fill", "none")   
+
+        var boundaryDom = d3.select('svg')
+                    .append("path")
+                    .attr("d", lineFunction(boundary))
+                    .attr("stroke", "black")
+                    .attr("stroke-width", 1)
+                    .style('stroke-dasharray', '2 2')
+                    .style("fill", "none")      
+
+        //load the 'waterdrop.svg' as the ant
+        paper.project.importSVG('../svg/waterdrop.svg', function(item){
+
+            visual_proxy = item._children[1]
+            visual_proxy.visible = true;
+
+            var speed = 25
+            var space = 25
+            var color = "#05a0ff"
+         
+            MA_Start()
+            marchingAntByExample(visual_proxy, path, boundary, speed, space, color)
+            MA_End()
+        })
+
+    </script>
+   
+</body>
+</html>
