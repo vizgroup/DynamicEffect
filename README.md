@@ -12,13 +12,15 @@ This repository provides the source code for the three Dynamic Effects in [Activ
 
 	- lib: //3rd party library
 	- src: //core code
-	- examples: //examples to demonstrate the usage of API
-		- marchingant.html //marching ants
+	- examples: //examples to demonstrate the usage of API 
+		- marchingant.html //marching ants, using the MA API: marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
+		- marchingantbyexample.html //marching ants, using the MA API: marchingAntByExample(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color), with a loaded .SVG as ant
 		- gradualappearance.html //gradual appearance	
 		- geometrydeformation.html //geometry deformation
 		- boxplot.html //boxplot + marching ants
 		- playfair.html //playfair's example + marching ants
-
+		- branch_in_mindmap.html //a simplified version from Mindmap, to show how MA API supports the moving-and-shrinking 
+ 
 	- API.md //API document
 	
 *To Run the Examples*
