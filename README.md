@@ -13,8 +13,10 @@ This repository provides the source code for the three Dynamic Effects in [Activ
 	- lib: //3rd party library
 	- src: //core code
 	- examples: //examples to demonstrate the usage of API 
-		- marchingant.html //marching ants, using the MA API: marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
-		- marchingantbyexample.html //marching ants, using the MA API: marchingAntByExample(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color), with a loaded .SVG as ant
+		- marchingant.html //marching ants, 
+		using the MA API: marchingAnt(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color)
+		- marchingantbyexample.html //marching ants, 
+		using the MA API: marchingAntByExample(Visual_proxy(Ant), Path, Boundary, Speed, Space, Color), with a loaded .SVG as ant
 		- gradualappearance.html //gradual appearance	
 		- geometrydeformation.html //geometry deformation
 		- boxplot.html //boxplot + marching ants
@@ -26,7 +28,8 @@ This repository provides the source code for the three Dynamic Effects in [Activ
 *To Run the Examples*
 
 	- Go to the directory ${path_to_github}
-	- Establish a html server, e.g., run 'python -m http.server 20098' if python version > 3.0, run 'python -m SimpleHTTPServer 20988' if python version < 3.0,
+	- Establish a html server, e.g., run 'python -m http.server 20098' if python version > 3.0, 
+	run 'python -m SimpleHTTPServer 20988' if python version < 3.0,
 	- Open the url 'http://localhost:20098/example' in browser, and choose the *.html, e.g., marchingantbyexample.html
 
 ## Marching Ants
