@@ -16,8 +16,16 @@ This repository provides the source code for the three Dynamic Effects in [Activ
 		- marchingant.html //marching ants
 		- gradualappearance.html //gradual appearance	
 		- geometrydeformation.html //geometry deformation
+		- boxplot.html //boxplot + marching ants
+		- playfair.html //playfair's example + marching ants
+
 	- API.md //API document
 	
+*To Run the Examples*
+
+	- Go to the directory ${path_to_github}
+	- Establish a html server, e.g., run 'python -m http.server 20098' if using python version > 3.0, 
+	- Open the url 'http://localhost:20098/example' in browser, and choose the *.html, e.g., marchingantbyexample.html
 
 ## Marching Ants
 
